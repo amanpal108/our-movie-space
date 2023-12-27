@@ -29,7 +29,7 @@ export const Join = () => {
 
   const handleCreateCall = () => {
     if (name.length === 0) {
-      fireAlert('Please Identify Yourself.', ALERT_TYPE.error);
+      fireAlert('Arye Name to Dalo Dumbo 🙄', ALERT_TYPE.error);
       return;
     }
 
@@ -58,18 +58,18 @@ export const Join = () => {
   const handleJoinCall = () => {
     const main = async () => {
       if (name.length === 0) {
-        fireAlert('Please Identify Yourself.', ALERT_TYPE.error);
+        fireAlert('Arye Name to Dalo Dumbo 🙄', ALERT_TYPE.error);
         return;
       }
       if (callID.length === 0) {
-        fireAlert('Invalid Call ID. Please try again with a valid one.', ALERT_TYPE.error);
+        fireAlert('Galat Call ID hai, Dhang sei Copy Paste Karo ID.', ALERT_TYPE.error);
         return;
       }
 
       const callDoc = db.collection('calls').doc(callID);
       const testCall = await callDoc.get();
       if (!testCall.exists) {
-        fireAlert('Invalid Call ID. Please try again with a valid one.', ALERT_TYPE.error);
+        fireAlert('Galat Call ID hai, Dhang sei Copy Paste Karo ID.', ALERT_TYPE.error);
         return;
       }
       
@@ -103,23 +103,17 @@ export const Join = () => {
         <div id='inputContainer'>
 
           <Typography variant="h5" gutterBottom>
-            <i>It takes two to </i><span id='brand'>Thango</span>
+          <span id='brand'>Our Movie Space</span>
           </Typography>
           <br />
+          
 
-          <TextField id='name' label='Display Name' variant='standard' value={name} onChange={(e) => setName(e.target.value)}/>
-          <Button id='createCallBtn' variant='contained' onClick={handleCreateCall} disabled={callID.length > 0}>Create Call</Button>
+          <TextField id='name' label='Whats your Name Darling?' variant='standard' value={name} onChange={(e) => setName(e.target.value)}/>
+          <Button id='createCallBtn' variant='contained' onClick={handleCreateCall} disabled={callID.length > 0}>Create Space</Button>
 
-          <TextField id='callID' label='Call ID'  variant='standard' value={callID} onChange={(e) => setCallID(e.target.value)}/>
-          <Button id='joinCallBtn' variant='contained' color='secondary' onClick={handleJoinCall} disabled={callID.length === 0}>Join Call</Button>
+          <TextField id='callID' label='Enter The Space Id'  variant='standard' value={callID} onChange={(e) => setCallID(e.target.value)}/>
+          <Button id='joinCallBtn' variant='contained' color='secondary' onClick={handleJoinCall} disabled={callID.length === 0}>Join Space</Button>
 
-          <br />
-          <Link to={ROUTES.HOW_TO}>How it works?</Link>
-          <Link to={ROUTES.TOS}>Terms of Service</Link>
-          <br />
-          <a rel='noreferrer' target='_blank' href={ROUTES.BUY_ME_TEA}>Buy me a cup of tea!</a>
-          <a rel='noreferrer' target='_blank' href={ROUTES.PATREON}>Support the project on Patreon!</a>
-          <a rel='noreferrer' target='_blank' href={ROUTES.GIT}>Check me out on Github!</a>
         </div>
         <div id='logoContainer'>
           <img src={logo.current} alt='logo'/>
